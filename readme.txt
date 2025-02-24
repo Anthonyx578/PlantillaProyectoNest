@@ -19,3 +19,17 @@ Tiene un buscador automatico de archivos .entity.ts para que no se tengan que im
 
 Common
 Carpeta donde existen archivos de funciones o configuraciones comunes para usar en cualquier modulo
+
+Docker
+El archivo docker file contiene lo necesario para dockerizar el proyecto facil
+el docker-compose contiene la directrices para el uso de servicios necesarios para este como lo puede ser 
+una base de datos
+
+Comandos 
+
+Para generar las imagenes
+docker-compose build
+Para levantar los contenedores
+docker-compose up
+Eliminar los contonedores levantados
+docker-compose down
