@@ -1,0 +1,35 @@
+#Servicios o aplicaciones que se quieran configurar[BackEnd,FrontEnd,BaseDeDatos]
+services:
+  #A este nivel defines con el nombre las aplicaciones
+  #importante esten en minusculas junto con el nombre del contenedor
+  backend:
+    container_name: "nombre"
+    ports:
+      #Primer puerto = Puerto de la pc que ejecuta el docker
+      #Segundo puerto = puerto que usara el contenedor si es una app que sea la misma configurada
+      #en el docker file
+      - "3000:3008"
+    #Se puede usar para linkear con otro servicio [No necesario para una db]
+    links:
+      - ""
+    #Agarra el archivo env que tengas en la raiz o de otra carpeta para usarlo
+    env_file:
+      - .env
+    #Si no usas el archivo puedes definir las variables y docker creara un archivo .env con estas
+    #importante en la base de datos si se usa env y quieres conectar con otro container el host es
+    #el nombre del servicio definido para el container de la base de datos
+    environment:
+      - name=value
+  #Este nombre iria en la variable host de la db
+  database:
+    container_name: "postgresqlDb"
+    #imagen de la db
+    image: postgres:16-alpine3.21
+    #donde se guardaran los datos de esta
+    volumes:
+      #Primero defines el nombre de el volumen y luego la ruta donde se uardara todo 
+      - SystemDb:/postgresqlDb/data
+
+networks:
+volumes:
+  SystemDb:
